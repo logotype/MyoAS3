@@ -4,9 +4,9 @@
 #include <iostream>
 
 #ifdef MYONATIVE_OS_WINDOWS
-    #include "FlashRuntimeExtensions.h"
+#include "FlashRuntimeExtensions.h"
 #else
-    #include <Adobe AIR/Adobe AIR.h>
+#include <Adobe AIR/Adobe AIR.h>
 #endif
 
 #include <myo/myo.hpp>
@@ -23,7 +23,7 @@ namespace myonative {
         Hub*     hub;
         Myo*     myo;
         MyoDeviceListener* listener;
-
+        
     private:
         FREContext m_ctx;
         FREObject createVector3(double x, double y, double z);

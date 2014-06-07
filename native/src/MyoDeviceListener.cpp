@@ -3,23 +3,23 @@
 #include "FREHelpers.h"
 
 namespace myonative {
-
+    
     MyoDeviceListener::MyoDeviceListener(FREContext ctx) {
         m_ctx = ctx;
     }
-
+    
     MyoDeviceListener::~MyoDeviceListener() {
         m_ctx = NULL;
     }
-
+    
     void MyoDeviceListener::onPair(myo::Myo* myo, uint64_t timestamp) {
-
+        
         FREObjectType type;
         FREObject actionScriptDataObject;
         if (!(FREGetContextActionScriptData(m_ctx, &actionScriptDataObject) == FRE_OK && FREGetObjectType(actionScriptDataObject, &type) == FRE_OK && type == FRE_TYPE_OBJECT)) {
             std::cout << "[NATIVE MyoDeviceListener::onPair] Could not find the ActionScriptData object" << std::endl;
         }
-
+        
         FREResult result;
         FREObject resultValue;
         
@@ -32,7 +32,7 @@ namespace myonative {
         
         FREObject data[] = {freMyo};
         result = FRECallObjectMethod(freListener, (const uint8_t*)"onPair", 1, data, &resultValue, NULL);
-
+        
         FREDebug(result, "onPair");
     }
     
@@ -42,7 +42,7 @@ namespace myonative {
         if (!(FREGetContextActionScriptData(m_ctx, &actionScriptDataObject) == FRE_OK && FREGetObjectType(actionScriptDataObject, &type) == FRE_OK && type == FRE_TYPE_OBJECT)) {
             std::cout << "[NATIVE MyoDeviceListener::onConnect] Could not find the ActionScriptData object" << std::endl;
         }
-
+        
         FREResult result;
         FREObject resultValue;
         
@@ -83,7 +83,7 @@ namespace myonative {
     }
     
     void MyoDeviceListener::onPose(myo::Myo* myo, uint64_t timestamp, Pose pose) {
-
+        
         FREObjectType type;
         FREObject actionScriptDataObject;
         if (!(FREGetContextActionScriptData(m_ctx, &actionScriptDataObject) == FRE_OK && FREGetObjectType(actionScriptDataObject, &type) == FRE_OK && type == FRE_TYPE_OBJECT)) {
@@ -109,10 +109,10 @@ namespace myonative {
         
         FREObject data[] = {freMyo, frePose};
         result = FRECallObjectMethod(freListener, (const uint8_t*)"onPose", 2, data, &resultValue, NULL);
-
+        
         FREDebug(result, "onPose");
     }
-
+    
     void MyoDeviceListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const Quaternion<float>& rotation) {
         FREObjectType type;
         FREObject actionScriptDataObject;
@@ -126,7 +126,7 @@ namespace myonative {
         FREObject freHub = getProperty(getExchangeObject(m_ctx), "hub");
         FREObject freMyos = getProperty(freHub, "_myos");
         FREObject freMyo = getElement(freMyos, 0);
-
+        
         FREObject freListeners = getProperty(freHub, "_listeners");
         FREObject freListener = getElement(freListeners, 0);
         
@@ -166,12 +166,12 @@ namespace myonative {
         FREObject freListener = getElement(freListeners, 0);
         
         FREObject freVector3;
-		FREObject freX, freY, freZ;
-		FRENewObjectFromDouble(accel.x(), &freX);
-		FRENewObjectFromDouble(accel.y(), &freY);
+        FREObject freX, freY, freZ;
+        FRENewObjectFromDouble(accel.x(), &freX);
+        FRENewObjectFromDouble(accel.y(), &freY);
         FRENewObjectFromDouble(accel.z(), &freZ);
-		FREObject params[] = {freX, freY, freZ};
-		FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Vector3", 3, params, &freVector3, NULL);
+        FREObject params[] = {freX, freY, freZ};
+        FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Vector3", 3, params, &freVector3, NULL);
         
         FREObject data[] = {freMyo, freVector3};
         result = FRECallObjectMethod(freListener, (const uint8_t*)"onAccelerometerData", 2, data, &resultValue, NULL);
@@ -197,12 +197,12 @@ namespace myonative {
         FREObject freListener = getElement(freListeners, 0);
         
         FREObject freVector3;
-		FREObject freX, freY, freZ;
-		FRENewObjectFromDouble(gyro.x(), &freX);
-		FRENewObjectFromDouble(gyro.y(), &freY);
+        FREObject freX, freY, freZ;
+        FRENewObjectFromDouble(gyro.x(), &freX);
+        FRENewObjectFromDouble(gyro.y(), &freY);
         FRENewObjectFromDouble(gyro.z(), &freZ);
-		FREObject params[] = {freX, freY, freZ};
-		FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Vector3", 3, params, &freVector3, NULL);
+        FREObject params[] = {freX, freY, freZ};
+        FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Vector3", 3, params, &freVector3, NULL);
         
         FREObject data[] = {freMyo, freVector3};
         result = FRECallObjectMethod(freListener, (const uint8_t*)"onGyroscopeData", 2, data, &resultValue, NULL);
@@ -228,7 +228,7 @@ namespace myonative {
         FREObject freListener = getElement(freListeners, 0);
         
         FREObject freRSSI;
-		FRENewObjectFromInt32(rssi, &freRSSI);
+        FRENewObjectFromInt32(rssi, &freRSSI);
         
         FREObject data[] = {freMyo, freRSSI};
         result = FRECallObjectMethod(freListener, (const uint8_t*)"onRssi", 2, data, &resultValue, NULL);

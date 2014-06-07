@@ -2,66 +2,66 @@
 #define MyoNative_MyoFREUtilities_h
 
 #ifdef MYONATIVE_OS_WINDOWS
-    #include "FlashRuntimeExtensions.h"
+#include "FlashRuntimeExtensions.h"
 #else
-    #include <Adobe AIR/Adobe AIR.h>
+#include <Adobe AIR/Adobe AIR.h>
 #endif
 
 #include <stdio.h>
 
 unsigned int createUnsignedIntFromFREObject(FREObject freObject)
 {
-	unsigned int value;
-	FREGetObjectAsUint32(freObject, &value);
-	return value;
+    unsigned int value;
+    FREGetObjectAsUint32(freObject, &value);
+    return value;
 }
 
 double createDoubleFromFREObject(FREObject freObject)
 {
-	double value;
-	FREGetObjectAsDouble(freObject, &value);
-	return value;
+    double value;
+    FREGetObjectAsDouble(freObject, &value);
+    return value;
 }
 
 bool createBoolFromFREObject(FREObject freObject)
 {
-	unsigned int value;
-	FREGetObjectAsBool(freObject, &value);
+    unsigned int value;
+    FREGetObjectAsBool(freObject, &value);
     return (value != 0);
 }
 
 FREObject createFREObjectForUTF8(const char* str)
 {
-	FREObject fre;
-	FRENewObjectFromUTF8(strlen(str), (const uint8_t*) str, &fre);
-	return fre;
+    FREObject fre;
+    FRENewObjectFromUTF8(strlen(str), (const uint8_t*) str, &fre);
+    return fre;
 }
 
 FREObject createFREObjectForUnsignedInt(unsigned int i)
 {
-	FREObject fre;
-	FRENewObjectFromUint32(i, &fre);
-	return fre;
+    FREObject fre;
+    FRENewObjectFromUint32(i, &fre);
+    return fre;
 }
 
 FREObject createFREObjectForDouble(double d)
 {
-	FREObject fre;
-	FRENewObjectFromDouble(d, &fre);
-	return fre;
+    FREObject fre;
+    FRENewObjectFromDouble(d, &fre);
+    return fre;
 }
 
 FREObject createFREObjectForBool(bool b)
 {
-	FREObject fre;
-	FRENewObjectFromBool((b) ? 1 : 0, &fre);
-	return fre;
+    FREObject fre;
+    FRENewObjectFromBool((b) ? 1 : 0, &fre);
+    return fre;
 }
 
 FREResult FRENewObjectFromUTF8Simple(const uint8_t*  value, FREObject* object){
-	uint32_t length = strlen((const char*)value) + 1;
+    uint32_t length = strlen((const char*)value) + 1;
     
-	return FRENewObjectFromUTF8(length, value, object);
+    return FRENewObjectFromUTF8(length, value, object);
 }
 
 void FREDebug(FREResult result, const char* note) {

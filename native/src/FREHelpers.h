@@ -4,9 +4,9 @@
 #include <iostream>
 
 #ifdef MYONATIVE_OS_WINDOWS
-    #include "FlashRuntimeExtensions.h"
+#include "FlashRuntimeExtensions.h"
 #else
-    #include <Adobe AIR/Adobe AIR.h>
+#include <Adobe AIR/Adobe AIR.h>
 #endif
 
 extern "C" {

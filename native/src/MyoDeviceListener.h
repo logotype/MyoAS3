@@ -4,9 +4,9 @@
 #include <iostream>
 
 #ifdef MYONATIVE_OS_WINDOWS
-    #include "FlashRuntimeExtensions.h"
+#include "FlashRuntimeExtensions.h"
 #else
-    #include <Adobe AIR/Adobe AIR.h>
+#include <Adobe AIR/Adobe AIR.h>
 #endif
 
 #include <myo/myo.hpp>
@@ -16,10 +16,10 @@ using namespace myo;
 namespace myonative {
     class MyoDeviceListener : public myo::DeviceListener {
     public:
-    
+        
         MyoDeviceListener(FREContext ctx);
         ~MyoDeviceListener();
-
+        
         /// Called when a Myo has been paired.
         virtual void onPair(Myo* myo, uint64_t timestamp);
         
@@ -44,9 +44,9 @@ namespace myonative {
         /// Called when a paired Myo has provided a new RSSI value.
         /// @see Myo::requestRssi() to request an RSSI value from the Myo.
         virtual void onRssi(Myo* myo, uint64_t timestamp, int8_t rssi);
-    
+        
     private:
-    
+        
         FREContext m_ctx;
     };
 }

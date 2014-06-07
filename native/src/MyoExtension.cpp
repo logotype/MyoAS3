@@ -7,18 +7,18 @@ extern "C" {
     
     FREObject isSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
         std::cout << "[NATIVE isSupported]" << std::endl;
-		FREObject isSupported;
-		FRENewObjectFromBool(1, &isSupported);
-		return isSupported;
-	}
-
+        FREObject isSupported;
+        FRENewObjectFromBool(1, &isSupported);
+        return isSupported;
+    }
+    
     FREObject initialize(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
         std::cout << "[NATIVE initialize]" << std::endl;
         FRESetContextActionScriptData(ctx, argv[0]);
         
         myonative::MyoDevice* device = new myonative::MyoDevice(ctx);
         FRESetContextNativeData(ctx, (void*) device);
-                
+        
         return NULL;
     }
     
@@ -29,7 +29,7 @@ extern "C" {
         FREGetContextNativeData(ctx, (void **) &device);
         
         device->hub->addListener(device->listener);
-
+        
         return NULL;
     }
     
@@ -44,7 +44,7 @@ extern "C" {
             std::cout << "[NATIVE hubWaitForAnyMyo] Unable to find a Myo!" << std::endl;
             return NULL;
         }
-                
+        
         FREObject freMyo;
         FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Myo", 0, NULL, &freMyo, NULL);
         
@@ -82,7 +82,7 @@ extern "C" {
         return NULL;
     }
     // Hub class end
-
+    
     // Myo class start
     FREObject myoRequestRSSI(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
         std::cout << "[NATIVE myoRequestRSSI]" << std::endl;
@@ -93,7 +93,7 @@ extern "C" {
         
         return NULL;
     }
-
+    
     FREObject myoVibrate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
         std::cout << "[NATIVE myoVibrate]" << std::endl;
         myonative::MyoDevice* device;
@@ -108,49 +108,49 @@ extern "C" {
         return NULL;
     }
     // Myo class end
-
+    
     FRENamedFunction _Shared_methods[] = {
         { (const uint8_t*) "isSupported", 0, isSupported }
-	};
+    };
     
-	FRENamedFunction _Instance_methods[] = {
-  		{ (const uint8_t*) "initialize", 0, initialize },
-  		{ (const uint8_t*) "waitForAnyMyo", 0, hubWaitForAnyMyo },
-  		{ (const uint8_t*) "addListener", 0, hubAddListener },
-  		{ (const uint8_t*) "run", 0, hubRun },
-  		{ (const uint8_t*) "requestRSSI", 0, myoRequestRSSI },
-  		{ (const uint8_t*) "vibrate", 0, myoVibrate }
-	};
+    FRENamedFunction _Instance_methods[] = {
+        { (const uint8_t*) "initialize", 0, initialize },
+        { (const uint8_t*) "waitForAnyMyo", 0, hubWaitForAnyMyo },
+        { (const uint8_t*) "addListener", 0, hubAddListener },
+        { (const uint8_t*) "run", 0, hubRun },
+        { (const uint8_t*) "requestRSSI", 0, myoRequestRSSI },
+        { (const uint8_t*) "vibrate", 0, myoVibrate }
+    };
     
     void initializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctions, const FRENamedFunction** functions) {
-
+        
         if ( 0 == strcmp( (const char*) ctxType, "shared" ) )
-		{
-			*numFunctions = sizeof( _Shared_methods ) / sizeof( FRENamedFunction );
-			*functions = _Shared_methods;
-		}
-		else
+        {
+            *numFunctions = sizeof( _Shared_methods ) / sizeof( FRENamedFunction );
+            *functions = _Shared_methods;
+        }
+        else
         {
             *numFunctions = sizeof( _Instance_methods ) / sizeof( FRENamedFunction );
             *functions = _Instance_methods;
         }
-	}
+    }
     
-	void finalizer(FREContext ctx) {
+    void finalizer(FREContext ctx) {
         myonative::MyoDevice* device;
         FREGetContextNativeData(ctx, (void **) &device);
         if(device != NULL) {
             delete device;
         }
-		return;
-	}
+        return;
+    }
     
-	void MyoNativeInitializer(void** extData, FREContextInitializer* ctxInitializer, FREContextFinalizer* ctxFinalizer) {
-		*ctxInitializer = &initializer;
-		*ctxFinalizer = &finalizer;
-	}
+    void MyoNativeInitializer(void** extData, FREContextInitializer* ctxInitializer, FREContextFinalizer* ctxFinalizer) {
+        *ctxInitializer = &initializer;
+        *ctxFinalizer = &finalizer;
+    }
     
-	void MyoNativeFinalizer(void* extData) {
-		return;
-	}
+    void MyoNativeFinalizer(void* extData) {
+        return;
+    }
 }

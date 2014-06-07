@@ -2,21 +2,21 @@
 #define __MyoNative__MyoExtension__
 
 #ifdef MYONATIVE_OS_WINDOWS
-    #ifdef MYONATIVE_EXPORTS
-        #define MYONATIVE_API __declspec(dllexport)
-    #else
-        #define MYONATIVE_API __declspec(dllimport)
-    #endif
-    #include "FlashRuntimeExtensions.h"
+#ifdef MYONATIVE_EXPORTS
+#define MYONATIVE_API __declspec(dllexport)
 #else
-    #define MYONATIVE_API __attribute__((visibility("default")))
-    #include <Adobe AIR/Adobe AIR.h>
+#define MYONATIVE_API __declspec(dllimport)
+#endif
+#include "FlashRuntimeExtensions.h"
+#else
+#define MYONATIVE_API __attribute__((visibility("default")))
+#include <Adobe AIR/Adobe AIR.h>
 #endif
 
 extern "C" {
     // shared methods
     FREObject isSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
-
+    
     // instance methods
     FREObject initialize(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
     FREObject hubWaitForAnyMyo(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
@@ -30,7 +30,7 @@ extern "C" {
     void finalizer(FREContext ctx);
     
     MYONATIVE_API void MyoNativeInitializer(void** extData, FREContextInitializer* ctxInitializer, FREContextFinalizer* ctxFinalizer);
-	MYONATIVE_API void MyoNativeFinalizer(void* extData);
+    MYONATIVE_API void MyoNativeFinalizer(void* extData);
 }
 
 #endif /* defined(__MyoNative__MyoExtension__) */
