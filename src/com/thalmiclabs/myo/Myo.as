@@ -77,7 +77,7 @@ package com.thalmiclabs.myo
 		 */
 		public function requestRssi():void
 		{
-			//call context	
+			context.call( "requestRssi" );
 		}
 		
 		/**
@@ -90,13 +90,13 @@ package com.thalmiclabs.myo
 			switch( length )
 			{
 				case VIBRATION_SHORT:
-					//call context
+					context.call( "vibrate", VIBRATION_SHORT );
 					break;
 				case VIBRATION_MEDIUM:
-					//call context
+					context.call( "vibrate", VIBRATION_MEDIUM );
 					break;
 				case VIBRATION_LONG:
-					//call context
+					context.call( "vibrate", VIBRATION_LONG );
 					break;
 				default:
 					throw new Error( "Valid values are: Myo.VIBRATION_SHORT, Myo.VIBRATION_MEDIUM, Myo.VIBRATION_LONG" );

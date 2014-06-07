@@ -22,6 +22,7 @@ extern "C" {
         return NULL;
     }
     
+    // Hub class start
     FREObject hubAddListener(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
         std::cout << "[NATIVE hubAddListener]" << std::endl;
         myonative::MyoDevice* device;
@@ -80,7 +81,34 @@ extern "C" {
         
         return NULL;
     }
-    
+    // Hub class end
+
+    // Myo class start
+    FREObject myoRequestRSSI(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        std::cout << "[NATIVE myoRequestRSSI]" << std::endl;
+        myonative::MyoDevice* device;
+        FREGetContextNativeData(ctx, (void **) &device);
+        
+        device->myo->requestRssi();
+        
+        return NULL;
+    }
+
+    FREObject myoVibrate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        std::cout << "[NATIVE myoVibrate]" << std::endl;
+        myonative::MyoDevice* device;
+        FREGetContextNativeData(ctx, (void **) &device);
+        
+        int vibrationType;
+        FREGetObjectAsInt32(argv[0], &vibrationType);
+        myo::Myo::VibrationType vibrationEnum = static_cast<myo::Myo::VibrationType>(vibrationType);
+        
+        device->myo->vibrate(vibrationEnum);
+        
+        return NULL;
+    }
+    // Myo class end
+
     FRENamedFunction _Shared_methods[] = {
         { (const uint8_t*) "isSupported", 0, isSupported }
 	};
@@ -89,16 +117,13 @@ extern "C" {
   		{ (const uint8_t*) "initialize", 0, initialize },
   		{ (const uint8_t*) "waitForAnyMyo", 0, hubWaitForAnyMyo },
   		{ (const uint8_t*) "addListener", 0, hubAddListener },
-  		{ (const uint8_t*) "run", 0, hubRun }
+  		{ (const uint8_t*) "run", 0, hubRun },
+  		{ (const uint8_t*) "requestRSSI", 0, myoRequestRSSI },
+  		{ (const uint8_t*) "vibrate", 0, myoVibrate }
 	};
     
     void initializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctions, const FRENamedFunction** functions) {
 
-        std::string rawContextType;
-        rawContextType.append(reinterpret_cast<const char*>(ctxType));
-        
-        std::cout << "[NATIVE rawContextType] " << rawContextType << std::endl;
-        
         if ( 0 == strcmp( (const char*) ctxType, "shared" ) )
 		{
 			*numFunctions = sizeof( _Shared_methods ) / sizeof( FRENamedFunction );

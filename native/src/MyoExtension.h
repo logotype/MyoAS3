@@ -22,6 +22,8 @@ extern "C" {
     FREObject hubWaitForAnyMyo(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
     FREObject hubAddListener(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
     FREObject hubRun(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+    FREObject myoRequestRSSI(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+    FREObject myoVibrate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
     
     // initializer / finalizer
     void initializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctions, const FRENamedFunction** functions);

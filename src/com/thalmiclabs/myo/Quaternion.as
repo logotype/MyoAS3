@@ -40,5 +40,15 @@ package com.thalmiclabs.myo
 		{
 			return Math.asin(2*rotation.x*rotation.y + 2*rotation.z*rotation.w);
 		}
+		
+		/**
+		 * Returns a string containing this quaternion in a human readable format: (x, y, z, w).
+		 * @return
+		 *
+		 */
+		public function toString():String
+		{
+			return "[Quaternion x:" + x + " y:" + y + " z:" + z + " w:" + w + "]";
+		}
 	}
 }
