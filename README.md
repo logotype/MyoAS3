@@ -26,7 +26,7 @@ AIR Native Extension
 
 You can use this library on both web and AIR projects. If you are using it on an AIR for Desktop project, you can take advantage of the AIR Native Extension.
 
-[Download the ane-file](https://github.com/logotype/MyoAS3/blob/master/bin/MyoAS3-asc2.ane?raw=true) and place it somewhere in your project (preferably in the directory where you would put your swc files). Link the ane file to your project:
+[Download the ane-file](https://github.com/logotype/MyoAS3/blob/master/bin/MyoAS3.ane?raw=true) and place it somewhere in your project (preferably in the directory where you would put your swc files). Link the ane file to your project:
 
 ####Flash Builder 4.7
 
@@ -51,21 +51,14 @@ You can use this library on both web and AIR projects. If you are using it on an
 3. Click on the plus (+) button on the bottom of that window and choose "New Library…".
 4. Choose the ane file you just downloaded.
 
-Documentation
------------
-
-[API documentation](http://logotype.github.io/MyoAS3Docs/index.html)
-
-To generate documentation, simply run `ant docs` from the build/ directory.
-
 Authors
 -------
 
 **Victor Norgren**
 
 + http://twitter.com/logotype
-+ http://github.com/logotype
-+ http://logotype.se
++ https://github.com/logotype
++ https://logotype.se
 
 
 Copyright and license
