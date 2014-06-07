@@ -1,14 +1,13 @@
 package com.thalmiclabs.myo.native
 {
 	import com.thalmiclabs.myo.Hub;
-	import com.thalmiclabs.myo.interfaces.IMyoConnection;
 	
 	import flash.desktop.NativeApplication;
 	import flash.events.Event;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
 
-	public class MyoNative implements IMyoConnection
+	public class MyoNative
 	{
 		/**
 		 * Boolean toggle to check if the class has been initialized
@@ -24,11 +23,6 @@ package com.thalmiclabs.myo.native
 		 * The native extension context for the device
 		 */
 		private var context:ExtensionContext;
-
-		/**
-		 * Whether the Myo is currently connected.
-		 */
-		private var _isConnected:Boolean = false;
 		
 		/**
 		 * TODO: make vectors of these 
@@ -105,14 +99,6 @@ package com.thalmiclabs.myo.native
 				}
 			}
 			return false;
-		}
-
-		/**
-		 * Whether the Myo is currently connected.
-		 */
-		public function get isConnected():Boolean
-		{
-			return _isConnected;
 		}
 	}
 }

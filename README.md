@@ -13,7 +13,7 @@ Clone the repo, `git clone git://github.com/logotype/MyoAS3.git`.
 
 Features
 --------
-
+<img src="http://logotype.se/myo/myoas3-stack.png">
 + Clean, lightweight and documented code
 + Same structure as official API
 + Uses AIR 14/ASC 2.0 compiler features (add the `-inline` and `-swf-version=25` compiler arguments)
