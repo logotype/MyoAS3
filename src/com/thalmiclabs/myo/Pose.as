@@ -5,7 +5,7 @@ package com.thalmiclabs.myo
 		/**
 		 * Default pose type when no pose is being made (PoseTypeNone)
 		 */
-		static public const POSE_NONE:int = 0;
+		static public const POSE_REST:int = 0;
 		
 		/**
 		 * Clenching fingers together to make a fist (PoseTypeFist)
@@ -30,7 +30,12 @@ package com.thalmiclabs.myo
 		/**
 		 * Twist your wrist in towards yourself (PoseTypeTwistIn)
 		 */
-		static public const POSE_TWIST_IN:int = 5;
+		static public const POSE_RESERVED_1:int = 5;
+		
+		/**
+		 * Twist your wrist in towards yourself (PoseTypeTwistIn)
+		 */
+		static public const POSE_THUMB_TO_PINKY:int = 6;
 		
 		/**
 		 * The Myo posting the pose. 
@@ -63,8 +68,8 @@ package com.thalmiclabs.myo
 		{
 			switch( type )
 			{
-				case POSE_NONE:
-					return "[Pose type:" + type.toString() + " POSE_NONE]";
+				case POSE_REST:
+					return "[Pose type:" + type.toString() + " POSE_REST]";
 					break;
 				case POSE_FIST:
 					return "[Pose type:" + type.toString() + " POSE_FIST]";
@@ -78,8 +83,11 @@ package com.thalmiclabs.myo
 				case POSE_FINGERS_SPREAD:
 					return "[Pose type:" + type.toString() + " POSE_FINGERS_SPREAD]";
 					break;
-				case POSE_TWIST_IN:
-					return "[Pose type:" + type.toString() + " POSE_TWIST_IN]";
+				case POSE_RESERVED_1:
+					return "[Pose type:" + type.toString() + " POSE_RESERVED_1]";
+					break;
+				case POSE_THUMB_TO_PINKY:
+					return "[Pose type:" + type.toString() + " POSE_THUMB_TO_PINKY]";
 					break;
 				default:
 					break;

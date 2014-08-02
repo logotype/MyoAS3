@@ -19,7 +19,7 @@ extern "C" {
     
     // instance methods
     FREObject initialize(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
-    FREObject hubWaitForAnyMyo(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+    FREObject hubWaitForMyo(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
     FREObject hubAddListener(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
     FREObject hubRun(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
     FREObject myoRequestRSSI(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);

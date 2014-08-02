@@ -33,37 +33,23 @@ extern "C" {
         return NULL;
     }
     
-    FREObject hubWaitForAnyMyo(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
-        std::cout << "[NATIVE hubWaitForAnyMyo]" << std::endl;
+    FREObject hubWaitForMyo(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        std::cout << "[NATIVE hubWaitForMyo]" << std::endl;
         myonative::MyoDevice* device;
         FREGetContextNativeData(ctx, (void **) &device);
-        device->myo = device->hub->waitForAnyMyo(10000);
+        device->myo = device->hub->waitForMyo(10000);
         
-        // If waitForAnyMyo() returned a null pointer, we failed to find a Myo, so exit with an error message.
+        // If waitForMyo() returned a null pointer, we failed to find a Myo, so exit with an error message.
         if (!device->myo) {
-            std::cout << "[NATIVE hubWaitForAnyMyo] Unable to find a Myo!" << std::endl;
+            std::cout << "[NATIVE hubWaitForMyo] Unable to find a Myo!" << std::endl;
             return NULL;
         }
         
         FREObject freMyo;
         FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Myo", 0, NULL, &freMyo, NULL);
         
-        FREObject freMyoIsTrained;
-        FRENewObjectFromBool(device->myo->isTrained(), &freMyoIsTrained);
-        FRESetObjectProperty(freMyo, (const uint8_t*) "isTrained", freMyoIsTrained, NULL);
-        
-        FREObject freMyoMacAddress;
-        FRENewObjectFromDouble(device->myo->macAddress(), &freMyoMacAddress);
-        FRESetObjectProperty(freMyo, (const uint8_t*) "macAddress", freMyoMacAddress, NULL);
-        
-        FREObject freMyoMacAddressAsString;
-        const uint8_t* macAddressString = reinterpret_cast<const uint8_t*>(&device->myo->macAddressAsString()[0]);
-        uint32_t macAddressStringLength = strlen((const char*)macAddressString) + 1;
-        FRENewObjectFromUTF8(macAddressStringLength, macAddressString, &freMyoMacAddressAsString);
-        FRESetObjectProperty(freMyo, (const uint8_t*) "macAddressAsString", freMyoMacAddressAsString, NULL);
-        
         // We've found a Myo, let's output its MAC address.
-        std::cout << std::endl << "[NATIVE hubWaitForAnyMyo]: Connected to " << device->myo->macAddressAsString() << "." << std::endl;
+        std::cout << std::endl << "[NATIVE hubWaitForMyo]: Connected to Myo." << std::endl;
         
         return freMyo;
     }
@@ -115,7 +101,7 @@ extern "C" {
     
     FRENamedFunction _Instance_methods[] = {
         { (const uint8_t*) "initialize", 0, initialize },
-        { (const uint8_t*) "waitForAnyMyo", 0, hubWaitForAnyMyo },
+        { (const uint8_t*) "waitForMyo", 0, hubWaitForMyo },
         { (const uint8_t*) "addListener", 0, hubAddListener },
         { (const uint8_t*) "run", 0, hubRun },
         { (const uint8_t*) "requestRSSI", 0, myoRequestRSSI },

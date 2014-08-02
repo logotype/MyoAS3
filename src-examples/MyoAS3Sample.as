@@ -45,13 +45,13 @@ package
 			hub = new Hub();
 			hub.addListener( this );
 
-			myo = hub.waitForAnyMyo();
+			myo = hub.waitForMyo();
 
 			if(!myo) {
 				trace("Unable to find a Myo! (AS)");
 				return;
 			}
-			trace("(AS) connected to: " + myo.macAddressAsString);
+			trace("(AS) connected!");
 
 			timer = new Timer(RUN_TIME, 0);
 			timer.addEventListener( TimerEvent.TIMER, onTimerHandler );
@@ -91,6 +91,14 @@ package
 			mTextView.textColor = 0xff0000;
 		}
 		
+		public function onArmRecognized( myo:Myo, arm:int, direction:int ):void {
+			trace( "onArmRecognized" );
+		}
+		
+		public function onArmLost( myo:Myo ):void {
+			trace( "onArmRecognized" );
+		}
+		
 		// onOrientationData() is called whenever a Myo provides its current orientation,
 		// represented as a quaternion.
 		public function onOrientationData( myo:Myo, rotation:Quaternion ):void {
@@ -111,7 +119,7 @@ package
 			// Handle the cases of the Pose.Type enumeration, and change the text of the text view
 			// based on the pose we receive.
 			switch (pose.type) {
-				case Pose.POSE_NONE:
+				case Pose.POSE_REST:
 					mTextView.text = "No Pose";
 					break;
 				case Pose.POSE_FIST:
@@ -126,8 +134,11 @@ package
 				case Pose.POSE_FINGERS_SPREAD:
 					mTextView.text = "Fingers Spread Pose";
 					break;
-				case Pose.POSE_TWIST_IN:
-					mTextView.text = "Twist In Pose";
+				case Pose.POSE_RESERVED_1:
+					mTextView.text = "Reserved1";
+					break;
+				case Pose.POSE_THUMB_TO_PINKY:
+					mTextView.text = "Thumb To Pinky";
 					break;
 			}
 		}

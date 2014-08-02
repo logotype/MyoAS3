@@ -44,21 +44,6 @@ package com.thalmiclabs.myo
 		public var name:String;
 		
 		/**
-		 * The MAC address associated with this device. 
-		 */		
-		public var macAddress:int;
-		
-		/**
-		 * The MAC address associated with this device as a formatted hex string. 
-		 */		
-		public var macAddressAsString:String;
-		
-		/**
-		 * Returns true if and only if this Myo is trained and will generate pose events. 
-		 */		
-		public var isTrained:Boolean;
-		
-		/**
 		 * @private
 		 * Native Extension context object.
 		 *

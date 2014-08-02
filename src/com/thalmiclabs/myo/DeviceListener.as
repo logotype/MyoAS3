@@ -24,6 +24,16 @@ package com.thalmiclabs.myo
 		function onDisconnect( myo:Myo ):void;
 		
 		/**
+		 * Called when a paired Myo has recognized arm and direction.
+		 */
+		function onArmRecognized( myo:Myo, arm:int, direction:int ):void;
+
+		/**
+		 * Called when a paired Myo has lost arm recognition.
+		 */
+		function onArmLost( myo:Myo ):void;
+		
+		/**
 		 * Called when a paired Myo has provided a new pose.
 		 */
 		function onPose( myo:Myo, pose:Pose ):void;
