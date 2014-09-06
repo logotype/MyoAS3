@@ -71,7 +71,11 @@ package
 		}
 
 		public function onPair( myo:Myo ):void {
-			trace( ">>> SAMPLE > onPaironPaironPaironPaironPaironPaironPaironPair");
+			trace( ">>> SAMPLE > onPair");
+		}
+		
+		public function onUnpair( myo:Myo ):void {
+			trace( ">>> SAMPLE > onUnpair");
 		}
 		
 		// onConnect() is called whenever a Myo has been connected.

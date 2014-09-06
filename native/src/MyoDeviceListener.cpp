@@ -36,6 +36,30 @@ namespace myonative {
         FREDebug(result, "onPair");
     }
     
+    void MyoDeviceListener::onUnpair(myo::Myo* myo, uint64_t timestamp) {
+        
+        FREObjectType type;
+        FREObject actionScriptDataObject;
+        if (!(FREGetContextActionScriptData(m_ctx, &actionScriptDataObject) == FRE_OK && FREGetObjectType(actionScriptDataObject, &type) == FRE_OK && type == FRE_TYPE_OBJECT)) {
+            std::cout << "[NATIVE MyoDeviceListener::onUnpair] Could not find the ActionScriptData object" << std::endl;
+        }
+        
+        FREResult result;
+        FREObject resultValue;
+        
+        FREObject freHub = getProperty(getExchangeObject(m_ctx), "hub");
+        FREObject freMyos = getProperty(freHub, "_myos");
+        FREObject freMyo = getElement(freMyos, 0);
+        
+        FREObject freListeners = getProperty(freHub, "_listeners");
+        FREObject freListener = getElement(freListeners, 0);
+        
+        FREObject data[] = {freMyo};
+        result = FRECallObjectMethod(freListener, (const uint8_t*)"onUnpair", 1, data, &resultValue, NULL);
+        
+        FREDebug(result, "onUnpair");
+    }
+    
     void MyoDeviceListener::onConnect(myo::Myo* myo, uint64_t timestamp) {
         FREObjectType type;
         FREObject actionScriptDataObject;

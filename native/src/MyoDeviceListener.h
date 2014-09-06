@@ -23,6 +23,9 @@ namespace myonative {
         /// Called when a Myo has been paired.
         virtual void onPair(Myo* myo, uint64_t timestamp);
         
+        /// Called when a Myo has been un-paired.
+        virtual void onUnpair(Myo* myo, uint64_t timestamp);
+        
         /// Called when a paired Myo has been connected.
         virtual void onConnect(Myo* myo, uint64_t timestamp);
         

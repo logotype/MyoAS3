@@ -14,6 +14,11 @@ package com.thalmiclabs.myo
 		function onPair( myo:Myo ):void;
 		
 		/**
+		 * Called when a Myo has been un-paired.
+		 */
+		function onUnpair( myo:Myo ):void;
+		
+		/**
 		 * Called when a paired Myo has been connected.
 		 */
 		function onConnect( myo:Myo ):void;
