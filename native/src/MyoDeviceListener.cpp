@@ -192,7 +192,7 @@ namespace myonative {
         FRENewObjectFromDouble(rotation.z(), &freQZ);
         FRENewObjectFromDouble(rotation.w(), &freQW);
         FREObject params[] = {freQX, freQY, freQZ, freQW};
-        result = FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Quaternion", 4, params, &freQuaternion, NULL);
+        FRENewObject( (const uint8_t*) "com.thalmiclabs.myo.Quaternion", 4, params, &freQuaternion, NULL);
         
         FREObject data[] = {freMyo, freQuaternion};
         result = FRECallObjectMethod(freListener, (const uint8_t*)"onOrientationData", 2, data, &resultValue, NULL);
