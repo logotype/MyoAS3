@@ -1,4 +1,4 @@
-[<img src="http://logotype.se/myo/logo_as3.png">](https://github.com/logotype/MyoAS3)
+[<img src="http://logotype.github.io/LeapMotionAS3Docs/examples/myo/logo_as3.png">](https://github.com/logotype/MyoAS3)
 
 This is the AS3 framework for working with Thalmic Labs Myo.
 
@@ -13,10 +13,10 @@ Clone the repo, `git clone git://github.com/logotype/MyoAS3.git`.
 
 Features
 --------
-<img src="http://logotype.se/myo/myoas3-stack.png">
+<img src="http://logotype.github.io/LeapMotionAS3Docs/examples/myo/myoas3-stack.png">
 + Clean, lightweight and documented code
 + Same structure as official API
-+ Uses AIR 14/ASC 2.0 compiler features (add the `-inline` and `-swf-version=25` compiler arguments)
++ Uses AIR 16/ASC 2.0 compiler features (add the `-inline` and `-swf-version=27` compiler arguments)
 + No external dependencies
 + AIR Native Extension (ANE) which directly interfaces with the C++ library (Mac OSX and Windows)
 + Compatible with Mac OSX (coming soon: Windows, iOS (iPad/iPhone/etc) and Android)
@@ -26,14 +26,14 @@ AIR Native Extension
 
 You can use this library on both web and AIR projects. If you are using it on an AIR for Desktop project, you can take advantage of the AIR Native Extension.
 
-[Download the ane-file](https://github.com/logotype/MyoAS3/blob/master/bin/MyoAS3.ane?raw=true) and place it somewhere in your project (preferably in the directory where you would put your swc files). Link the ane file to your project:
+[Download the ANE-file](https://github.com/logotype/MyoAS3/blob/master/bin/MyoAS3.ane?raw=true) and place it somewhere in your project (preferably in the directory where you would put your swc files). Link the ANE file to your project:
 
 ####Flash Builder 4.7
 
 
 1. Right click on your AIR for desktop project and choose properties.
-2. Select Actionscript build path > Library path and click on Add SWC… Select the ane file you just downloaded.
-3. In that same window, choose Native Extensions and click on Add ANE… Select that same ane file.
+2. Select Actionscript build path > Library path and click on Add SWC… Select the ANE file you just downloaded.
+3. In that same window, choose Native Extensions and click on Add ANE… Select that same ANE file.
 4. Select Actionscript Build Packaging > Native extensions. Check the checkbox next to the native extension. Ignore the warning that says the extension isn't used.
 
 ####Flash CC/Flash CS6
@@ -41,7 +41,7 @@ You can use this library on both web and AIR projects. If you are using it on an
 
 1. Select File > Actionscript settings.
 2. On the Library Path tab, click on the "Browse to a Native Extension (ANE)" button (button to the right of the SWC button).
-3. Choose the ane file you just downloaded.
+3. Choose the ANE file you just downloaded.
 
 ####IntelliJ IDEA
 
@@ -49,7 +49,7 @@ You can use this library on both web and AIR projects. If you are using it on an
 1. Right-click on your module and choose "Open Module Settings".
 2. Select the build configuration for your Module and open the Dependencies tab.
 3. Click on the plus (+) button on the bottom of that window and choose "New Library…".
-4. Choose the ane file you just downloaded.
+4. Choose the ANE file you just downloaded.
 
 Authors
 -------
