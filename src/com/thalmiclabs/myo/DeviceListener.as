@@ -31,12 +31,12 @@ package com.thalmiclabs.myo
 		/**
 		 * Called when a paired Myo has recognized arm and direction.
 		 */
-		function onArmRecognized( myo:Myo, arm:int, direction:int ):void;
+		function onArmSync( myo:Myo, arm:int, direction:int ):void;
 
 		/**
 		 * Called when a paired Myo has lost arm recognition.
 		 */
-		function onArmLost( myo:Myo ):void;
+		function onArmUnsync( myo:Myo ):void;
 		
 		/**
 		 * Called when a paired Myo has provided a new pose.

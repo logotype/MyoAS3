@@ -10,29 +10,29 @@
 	<string>MyoNative</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CE50B933-50CE-49D8-8B0C-DE3F15B0D598</key>
+		<key>B1C74BA0D04A2A0A1950DB4C6B8AC3E8DC66C63A</key>
 		<string>https://github.com/logotype/MyoAS3.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>native/osx-xcode/MyoNative.xcodeproj/project.xcworkspace</string>
+	<string>native/osx-xcode/MyoNative.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CE50B933-50CE-49D8-8B0C-DE3F15B0D598</key>
+		<key>B1C74BA0D04A2A0A1950DB4C6B8AC3E8DC66C63A</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/logotype/MyoAS3.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CE50B933-50CE-49D8-8B0C-DE3F15B0D598</string>
+	<string>B1C74BA0D04A2A0A1950DB4C6B8AC3E8DC66C63A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CE50B933-50CE-49D8-8B0C-DE3F15B0D598</string>
+			<string>B1C74BA0D04A2A0A1950DB4C6B8AC3E8DC66C63A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MyoAS3</string>
 		</dict>

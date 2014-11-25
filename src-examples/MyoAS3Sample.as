@@ -95,12 +95,12 @@ package
 			mTextView.textColor = 0xff0000;
 		}
 		
-		public function onArmRecognized( myo:Myo, arm:int, direction:int ):void {
-			trace( "onArmRecognized" );
+		public function onArmSync( myo:Myo, arm:int, direction:int ):void {
+			trace( "onArmSync" );
 		}
 		
-		public function onArmLost( myo:Myo ):void {
-			trace( "onArmRecognized" );
+		public function onArmUnsync( myo:Myo ):void {
+			trace( "onArmUnsync" );
 		}
 		
 		// onOrientationData() is called whenever a Myo provides its current orientation,
