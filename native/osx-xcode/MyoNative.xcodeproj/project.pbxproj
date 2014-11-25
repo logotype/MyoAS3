@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		375B3AD7198D7239003A358F /* Adobe AIR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Adobe AIR.framework"; path = "../../../../../../../Applications/Adobe Flash Builder 4.7/eclipse/plugins/com.adobe.flash.compiler_4.7.0.349722/AIRSDK/runtimes/air/mac/Adobe AIR.framework"; sourceTree = "<group>"; };
-		375B3AD9198D72A4003A358F /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = ../../../MyoDeveloperKit/myo.framework; sourceTree = "<group>"; };
+		375B3AD9198D72A4003A358F /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = ../bin/myo.framework; sourceTree = "<group>"; };
 		375F4BDD1942C8F7009C576A /* FREHelpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FREHelpers.cpp; sourceTree = "<group>"; };
 		375F4BDE1942C8F7009C576A /* FREHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FREHelpers.h; sourceTree = "<group>"; };
 		37B9FCD31922687100FF2C3B /* MyoDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyoDevice.cpp; sourceTree = "<group>"; };
@@ -337,9 +337,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SYSTEM_APPS_DIR)/Adobe Flash Builder 4.7/eclipse/plugins/com.adobe.flash.compiler_4.7.0.349722/AIRSDK/runtimes/air/mac/\"",
-					"\"$(PROJECT_DIR)/../../../MyoDeveloperKit\"",
 					"$(PROJECT_DIR)",
-					/Users/logotype/Documents/Repositories/MyoDeveloperKit,
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -370,9 +368,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SYSTEM_APPS_DIR)/Adobe Flash Builder 4.7/eclipse/plugins/com.adobe.flash.compiler_4.7.0.349722/AIRSDK/runtimes/air/mac/\"",
-					"\"$(PROJECT_DIR)/../../../MyoDeveloperKit\"",
 					"$(PROJECT_DIR)",
-					/Users/logotype/Documents/Repositories/MyoDeveloperKit,
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

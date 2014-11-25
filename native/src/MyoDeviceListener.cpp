@@ -82,11 +82,11 @@ namespace myonative {
         FREDebug(result, "onDisconnect");
     }
     
-    void MyoDeviceListener::onArmRecognized(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo::XDirection xDirection) {
+    void MyoDeviceListener::onArmSync(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo::XDirection xDirection) {
         FREObjectType type;
         FREObject actionScriptDataObject;
         if (!(FREGetContextActionScriptData(m_ctx, &actionScriptDataObject) == FRE_OK && FREGetObjectType(actionScriptDataObject, &type) == FRE_OK && type == FRE_TYPE_OBJECT)) {
-            std::cout << "[NATIVE MyoDeviceListener::onArmRecognized] Could not find the ActionScriptData object" << std::endl;
+            std::cout << "[NATIVE MyoDeviceListener::onArmSync] Could not find the ActionScriptData object" << std::endl;
         }
         
         FREResult result;
@@ -106,16 +106,16 @@ namespace myonative {
         FRENewObjectFromInt32(xDirection, &freDirection);
         
         FREObject data[] = {freMyo, freArm, freDirection};
-        result = FRECallObjectMethod(freListener, (const uint8_t*)"onArmRecognized", 1, data, &resultValue, NULL);
+        result = FRECallObjectMethod(freListener, (const uint8_t*)"onArmSync", 1, data, &resultValue, NULL);
         
-        FREDebug(result, "onArmRecognized");
+        FREDebug(result, "onArmSync");
     }
     
-    void MyoDeviceListener::onArmLost(myo::Myo* myo, uint64_t timestamp) {
+    void MyoDeviceListener::onArmUnsync(myo::Myo* myo, uint64_t timestamp) {
         FREObjectType type;
         FREObject actionScriptDataObject;
         if (!(FREGetContextActionScriptData(m_ctx, &actionScriptDataObject) == FRE_OK && FREGetObjectType(actionScriptDataObject, &type) == FRE_OK && type == FRE_TYPE_OBJECT)) {
-            std::cout << "[NATIVE MyoDeviceListener::onArmLost] Could not find the ActionScriptData object" << std::endl;
+            std::cout << "[NATIVE MyoDeviceListener::onArmUnsync] Could not find the ActionScriptData object" << std::endl;
         }
         
         FREResult result;
@@ -129,9 +129,9 @@ namespace myonative {
         FREObject freListener = getElement(freListeners, 0);
         
         FREObject data[] = {freMyo};
-        result = FRECallObjectMethod(freListener, (const uint8_t*)"onArmLost", 1, data, &resultValue, NULL);
+        result = FRECallObjectMethod(freListener, (const uint8_t*)"onArmUnsync", 1, data, &resultValue, NULL);
         
-        FREDebug(result, "onArmLost");
+        FREDebug(result, "onArmUnsync");
     }
     
     void MyoDeviceListener::onPose(myo::Myo* myo, uint64_t timestamp, Pose pose) {
