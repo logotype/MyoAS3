@@ -1,3 +1,7 @@
+Development of this ANE is on hold until Adobe supports 64-bit-only ANEs
+========================================================================
+> The `myo.framework` is now only available in 64-bit and ANEs are currently required to be compiled for both 32- and 64-bit.
+
 [<img src="http://logotype.github.io/LeapMotionAS3Docs/examples/myo/logo_as3.png">](https://github.com/logotype/MyoAS3)
 
 This is the AS3 framework for working with Thalmic Labs Myo.
